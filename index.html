@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>今日の英語 - 赤ちゃんに話しかける1日1単語</title>
+  <meta name="description" content="赤ちゃんに話しかけたい英語を、1日1つ届けるアプリ。クリックすると発音を読み上げます。">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="app">
+    <header class="header">
+      <h1>👶 今日の英語</h1>
+      <p class="subtitle">赤ちゃんに話しかけたい、1日1つの英語フレーズ</p>
+    </header>
+
+    <div class="mode-tabs" role="tablist">
+      <button class="mode-tab active" id="tabDaily" data-mode="daily" role="tab" aria-selected="true">📅 デイリー</button>
+      <button class="mode-tab" id="tabList" data-mode="list" role="tab" aria-selected="false">📋 リスト</button>
+    </div>
+
+    <main>
+      <section id="dailyView">
+        <section class="card" id="card">
+          <div class="day-badge" id="dayBadge">Day 1</div>
+          <div class="tag-badge" id="tagBadge">あいさつ</div>
+
+          <div class="emoji" id="emoji" aria-hidden="true">☀️</div>
+
+          <button class="phrase-btn" id="phraseBtn" aria-label="発音を聞く">
+            <span class="phrase" id="phrase">Good morning!</span>
+            <span class="speaker-icon" aria-hidden="true">🔊</span>
+          </button>
+
+          <p class="translation" id="translation">おはよう!</p>
+
+          <p class="hint" id="voiceHint"></p>
+        </section>
+
+        <section class="next-word">
+          <button class="next-btn" id="nextBtn">👉 つぎのことば</button>
+        </section>
+      </section>
+
+      <section id="listView" class="hidden">
+        <div class="tag-filters" id="tagFilters"></div>
+        <ul class="word-list" id="wordList"></ul>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>毎日ことばのシャワーを、赤ちゃんに 🌱</p>
+    </footer>
+  </div>
+
+  <script src="words.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
