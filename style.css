@@ -263,7 +263,7 @@ body {
 }
 
 .word-list .history-item {
-  cursor: default;
+  cursor: pointer;
 }
 
 .word-list .h-tag {

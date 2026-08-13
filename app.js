@@ -91,6 +91,13 @@
     renderCurrentWord();
   });
 
+  // ---- デイリー表示へジャンプ ----
+  function jumpToWord(w) {
+    currentOffset = daysSinceStart() - WORDS.indexOf(w);
+    renderCurrentWord();
+    setMode("daily");
+  }
+
   // ---- 単語カード（履歴・リスト共通） ----
   function createWordItem(w, options) {
     const showTag = options && options.showTag;
@@ -102,7 +109,11 @@
       '<span class="h-ja">' + w.ja + "</span></span>" +
       (showTag ? '<span class="h-tag">' + w.tag + "</span>" : "") +
       '<button class="h-play" aria-label="発音を聞く">🔊</button>';
-    li.querySelector(".h-play").addEventListener("click", () => speak(w.en));
+    li.querySelector(".h-play").addEventListener("click", (e) => {
+      e.stopPropagation();
+      speak(w.en);
+    });
+    li.addEventListener("click", () => jumpToWord(w));
     return li;
   }
 
