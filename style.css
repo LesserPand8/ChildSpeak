@@ -11,12 +11,20 @@
   font-size: 16px;
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: "Hiragino Maru Gothic ProN", "Rounded Mplus 1c", "Yu Gothic", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family:
+    "Hiragino Maru Gothic ProN",
+    "Rounded Mplus 1c",
+    "Yu Gothic",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
   background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-bottom) 100%);
   color: var(--text);
   display: flex;
@@ -98,7 +106,9 @@ body {
   font-weight: 700;
   cursor: pointer;
   box-shadow: 0 6px 16px rgba(255, 158, 181, 0.45);
-  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease;
   max-width: 100%;
 }
 
@@ -112,8 +122,13 @@ body {
 }
 
 @keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.04); }
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.04);
+  }
 }
 
 .phrase {
@@ -154,7 +169,9 @@ body {
   font-weight: 700;
   cursor: pointer;
   box-shadow: 0 6px 16px rgba(142, 203, 255, 0.45);
-  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease;
 }
 
 .next-btn:active {
@@ -169,7 +186,7 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .history-item .h-emoji {
@@ -274,6 +291,15 @@ body {
   padding: 2px 8px;
   border-radius: 999px;
   flex-shrink: 0;
+}
+
+.recommend-section {
+  margin-top: 28px;
+}
+
+.recommend-heading {
+  font-size: 1.05rem;
+  margin: 0 0 12px;
 }
 
 .footer {
