@@ -1,18 +1,6 @@
 (function () {
-  const START_DATE = new Date(2026, 7, 13); // 基準日（固定・公開日）
-
-  function localDateOnly(d) {
-    return new Date(d.getFullYear(), d.getMonth(), d.getDate());
-  }
-
-  function daysSinceStart() {
-    const today = localDateOnly(new Date());
-    const diff = today - START_DATE;
-    return Math.round(diff / 86400000);
-  }
-
   function wordIndexForOffset(offsetFromToday) {
-    const idx = (daysSinceStart() - offsetFromToday) % WORDS.length;
+    const idx = -offsetFromToday % WORDS.length;
     return ((idx % WORDS.length) + WORDS.length) % WORDS.length;
   }
 
@@ -72,7 +60,7 @@
 
   function renderCurrentWord() {
     currentWord = WORDS[wordIndexForOffset(currentOffset)];
-    dayBadgeEl.textContent = "Day " + (daysSinceStart() + 1 - currentOffset);
+    dayBadgeEl.textContent = "Day " + (1 - currentOffset);
     tagBadgeEl.textContent = currentWord.tag;
     emojiEl.textContent = currentWord.emoji;
     phraseEl.textContent = currentWord.en;
@@ -93,7 +81,7 @@
 
   // ---- デイリー表示へジャンプ ----
   function jumpToWord(w) {
-    currentOffset = daysSinceStart() - WORDS.indexOf(w);
+    currentOffset = -WORDS.indexOf(w);
     renderCurrentWord();
     setMode("daily");
   }
