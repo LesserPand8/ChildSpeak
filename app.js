@@ -55,7 +55,24 @@
   const phraseEl = document.getElementById("phrase");
   const translationEl = document.getElementById("translation");
 
-  let currentOffset = 0; // 0 = 今日、マイナスほど先の単語
+  // ---- 進捗の保存（最後に見た単語から再開） ----
+  const LAST_INDEX_KEY = "childspeak:lastWordIndex";
+
+  function loadLastIndex() {
+    try {
+      const idx = Number(localStorage.getItem(LAST_INDEX_KEY));
+      if (Number.isInteger(idx) && idx >= 0 && idx < WORDS.length) return idx;
+    } catch (e) {}
+    return 0;
+  }
+
+  function saveLastIndex(idx) {
+    try {
+      localStorage.setItem(LAST_INDEX_KEY, String(idx));
+    } catch (e) {}
+  }
+
+  let currentOffset = -loadLastIndex(); // 前回の続きから再開（0 = 保存なし/最初から）
   let currentWord = WORDS[wordIndexForOffset(currentOffset)];
 
   function renderCurrentWord() {
@@ -65,6 +82,7 @@
     emojiEl.textContent = currentWord.emoji;
     phraseEl.textContent = currentWord.en;
     translationEl.textContent = currentWord.ja;
+    saveLastIndex(wordIndexForOffset(currentOffset));
   }
   renderCurrentWord();
 
