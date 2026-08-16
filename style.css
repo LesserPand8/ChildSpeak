@@ -155,7 +155,9 @@ body {
 }
 
 .next-word {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
   margin: 18px 0;
 }
 
@@ -177,6 +179,24 @@ body {
 .next-btn:active {
   transform: scale(0.96);
   box-shadow: 0 3px 8px rgba(142, 203, 255, 0.45);
+}
+
+.prev-btn {
+  background: white;
+  border: 2px solid var(--blue);
+  color: var(--blue);
+  padding: 10px 26px;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease;
+}
+
+.prev-btn:active {
+  transform: scale(0.96);
 }
 
 .history-item {

@@ -48,6 +48,7 @@
 
   // ---- 単語を表示（「つぎのことば」ボタンで切り替え） ----
   const phraseBtn = document.getElementById("phraseBtn");
+  const prevBtn = document.getElementById("prevBtn");
   const nextBtn = document.getElementById("nextBtn");
   const dayBadgeEl = document.getElementById("dayBadge");
   const tagBadgeEl = document.getElementById("tagBadge");
@@ -76,13 +77,16 @@
   let currentWord = WORDS[wordIndexForOffset(currentOffset)];
 
   function renderCurrentWord() {
-    currentWord = WORDS[wordIndexForOffset(currentOffset)];
+    const idx = wordIndexForOffset(currentOffset);
+    currentWord = WORDS[idx];
     dayBadgeEl.textContent = "Day " + (1 - currentOffset);
     tagBadgeEl.textContent = currentWord.tag;
     emojiEl.textContent = currentWord.emoji;
     phraseEl.textContent = currentWord.en;
     translationEl.textContent = currentWord.ja;
-    saveLastIndex(wordIndexForOffset(currentOffset));
+    saveLastIndex(idx);
+    prevBtn.classList.toggle("hidden", idx === 0);
+    nextBtn.classList.toggle("hidden", idx === WORDS.length - 1);
   }
   renderCurrentWord();
 
@@ -92,6 +96,10 @@
   }
 
   phraseBtn.addEventListener("click", playCurrent);
+  prevBtn.addEventListener("click", () => {
+    currentOffset += 1;
+    renderCurrentWord();
+  });
   nextBtn.addEventListener("click", () => {
     currentOffset -= 1;
     renderCurrentWord();
